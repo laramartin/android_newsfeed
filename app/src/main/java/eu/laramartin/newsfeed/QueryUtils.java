@@ -42,7 +42,7 @@ public class QueryUtils {
             Log.v("QueryUtils", "URL success");
             return new URL(stringUrl);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            Log.e("Queryutils", "Error creating URL: " + e);
             return null;
         }
 
@@ -71,7 +71,7 @@ public class QueryUtils {
                 Log.e("mainActivity", "Error response code: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e("Queryutils", "Error making HTTP request: " + e);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -108,7 +108,7 @@ public class QueryUtils {
             resultsArray = jsonResults.getJSONArray("results");
 
         } catch (JSONException e) {
-            e.printStackTrace();
+            Log.e("Queryutils", "Error parsing JSON response" + e);
         }
 
         return resultsArray;

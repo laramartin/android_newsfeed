@@ -2,6 +2,7 @@ package eu.laramartin.newsfeed;
 
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
+import android.util.Log;
 
 import org.json.JSONArray;
 
@@ -32,7 +33,7 @@ public class NewsLoader extends AsyncTaskLoader<JSONArray> {
             String jsonResponse = QueryUtils.makeHttpRequest(url);
             newsList = QueryUtils.parseJson(jsonResponse);
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e("Queryutils", "Error Loader LoadInBackground: " + e);
         }
 
         return newsList;
