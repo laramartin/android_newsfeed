@@ -98,7 +98,7 @@ public class QueryUtils {
     }
 
     static JSONArray parseJson(String response) {
-        ArrayList<News> newsList = new ArrayList<>();
+        ArrayList<News> listOfNews = new ArrayList<>();
 
         JSONArray resultsArray = null;
 
@@ -107,8 +107,29 @@ public class QueryUtils {
             JSONObject jsonResults = jsonResponse.getJSONObject("response");
             resultsArray = jsonResults.getJSONArray("results");
 
+            for (int i = 0; i < resultsArray.length(); i++) {
+                JSONObject oneResult = resultsArray.getJSONObject(i);
+                String webTitle = oneResult.getString("webTitle");
+                String url = oneResult.getString("webUrl");
+                String date = oneResult.getString("webPublicationDate");
+                String section = oneResult.getString("sectionName");
+
+                JSONArray referencesArray = oneResult.getJSONArray("references");
+                String author = null;
+
+                if (referencesArray.length() == 0) {
+                    author = null;
+                } else {
+                    JSONObject firstAuthor = referencesArray.getJSONObject(0);
+                    author = firstAuthor.getString("id");
+                }
+
+                Log.v("queryutils", "author: " + author);
+
+            }
+
         } catch (JSONException e) {
-            Log.e("Queryutils", "Error parsing JSON response" + e);
+            Log.e("Queryutils", "Error parsing JSON response", e);
         }
 
         return resultsArray;
