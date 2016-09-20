@@ -18,6 +18,12 @@ public class NewsLoader extends AsyncTaskLoader<JSONArray> {
     }
 
     @Override
+    protected void onStartLoading() {
+        super.onStartLoading();
+        forceLoad();
+    }
+
+    @Override
     public JSONArray loadInBackground() {
 
         JSONArray newsList = null;

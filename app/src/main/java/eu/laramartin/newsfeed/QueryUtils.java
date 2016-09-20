@@ -100,16 +100,17 @@ public class QueryUtils {
     static JSONArray parseJson(String response) {
         ArrayList<News> newsList = new ArrayList<>();
 
-        JSONArray jsonArray = null;
+        JSONArray resultsArray = null;
 
         try {
             JSONObject jsonResponse = new JSONObject(response);
-            jsonArray = jsonResponse.getJSONArray("results");
+            JSONObject jsonResults = jsonResponse.getJSONObject("response");
+            resultsArray = jsonResults.getJSONArray("results");
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return jsonArray;
+        return resultsArray;
     }
 }

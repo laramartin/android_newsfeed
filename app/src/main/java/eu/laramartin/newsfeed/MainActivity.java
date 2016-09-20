@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Log.v("Mainactivity", "URL: " + QueryUtils.createStringUrl());
+        getSupportLoaderManager().initLoader(0, null, this);
 
     }
 
