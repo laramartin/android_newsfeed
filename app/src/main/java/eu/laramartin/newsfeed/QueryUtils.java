@@ -16,6 +16,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by lara on 20/9/16.
@@ -29,7 +30,8 @@ public class QueryUtils {
                 .appendPath("search")
                 .appendQueryParameter("order-by", "newest")
                 .appendQueryParameter("show-references", "author")
-                .appendQueryParameter("q", "tokyo")
+                .appendQueryParameter("show-tags", "contributor")
+                .appendQueryParameter("q", "Markets await Federal Reserve")
                 .appendQueryParameter("api-key", "test");
         String url = builder.build().toString();
         Log.v("QueryUtils", "url: " + url);
@@ -97,7 +99,7 @@ public class QueryUtils {
         return output.toString();
     }
 
-    static JSONArray parseJson(String response) {
+    static List<News> parseJson(String response) {
         ArrayList<News> listOfNews = new ArrayList<>();
 
         JSONArray resultsArray = null;
@@ -114,24 +116,26 @@ public class QueryUtils {
                 String date = oneResult.getString("webPublicationDate");
                 String section = oneResult.getString("sectionName");
 
-                JSONArray referencesArray = oneResult.getJSONArray("references");
-                String author = null;
+                JSONArray tagsArray = oneResult.getJSONArray("tags");
+                String author = "";
 
-                if (referencesArray.length() == 0) {
+                if (tagsArray.length() == 0) {
                     author = null;
                 } else {
-                    JSONObject firstAuthor = referencesArray.getJSONObject(0);
-                    author = firstAuthor.getString("id");
+                    for (int j = 0; j < tagsArray.length(); j++) {
+                        JSONObject firstObject = tagsArray.getJSONObject(j);
+                        author += firstObject.getString("webTitle") + ". ";
+                    }
                 }
 
+                listOfNews.add(new News(webTitle, author, url, date, section));
                 Log.v("queryutils", "author: " + author);
-
             }
 
         } catch (JSONException e) {
             Log.e("Queryutils", "Error parsing JSON response", e);
         }
 
-        return resultsArray;
+        return listOfNews;
     }
 }

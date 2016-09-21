@@ -4,15 +4,14 @@ import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
 import android.util.Log;
 
-import org.json.JSONArray;
-
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 
 /**
  * Created by lara on 20/9/16.
  */
-public class NewsLoader extends AsyncTaskLoader<JSONArray> {
+public class NewsLoader extends AsyncTaskLoader<List<News>> {
 
     public NewsLoader(Context context) {
         super(context);
@@ -25,17 +24,17 @@ public class NewsLoader extends AsyncTaskLoader<JSONArray> {
     }
 
     @Override
-    public JSONArray loadInBackground() {
+    public List<News> loadInBackground() {
 
-        JSONArray newsList = null;
+        List<News> listOfNews = null;
         try {
             URL url = QueryUtils.createUrl();
             String jsonResponse = QueryUtils.makeHttpRequest(url);
-            newsList = QueryUtils.parseJson(jsonResponse);
+            listOfNews = QueryUtils.parseJson(jsonResponse);
         } catch (IOException e) {
             Log.e("Queryutils", "Error Loader LoadInBackground: " + e);
         }
 
-        return newsList;
+        return listOfNews;
     }
 }
