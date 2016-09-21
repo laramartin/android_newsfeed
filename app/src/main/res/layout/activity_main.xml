@@ -9,17 +9,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="eu.laramartin.newsfeed.MainActivity">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Type topic, author or location"
-        android:id="@+id/editText" />
-
     <ListView
         android:id="@+id/list_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/editText">
+        android:layout_height="match_parent">
 
     </ListView>
 </RelativeLayout>
