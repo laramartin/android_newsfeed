@@ -5,26 +5,26 @@ package eu.laramartin.newsfeed;
  */
 public class News {
 
-    String headline;
+    String title;
     String author;
     String url;
     String date;
     String section;
 
-    public News(String headline, String author, String url, String date, String section) {
-        this.headline = headline;
+    public News(String title, String author, String url, String date, String section) {
+        this.title = title;
         this.author = author;
         this.url = url;
         this.date = date;
         this.section = section;
     }
 
-    public String getHeadline() {
-        return headline;
+    public String getTitle() {
+        return title;
     }
 
-    public void setHeadline(String headline) {
-        this.headline = headline;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getAuthor() {
@@ -62,7 +62,7 @@ public class News {
     @Override
     public String toString() {
         return "News{" +
-                "headline='" + headline + '\'' +
+                "title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", url='" + url + '\'' +
                 ", date='" + date + '\'' +
