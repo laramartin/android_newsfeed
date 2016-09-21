@@ -15,8 +15,12 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by lara on 20/9/16.
@@ -44,10 +48,26 @@ public class QueryUtils {
             Log.v("QueryUtils", "URL success");
             return new URL(stringUrl);
         } catch (MalformedURLException e) {
-            Log.e("Queryutils", "Error creating URL: " + e);
+            Log.e("Queryutils", "Error creating URL: ", e);
             return null;
         }
 
+    }
+
+    private static String formatDate(String rawDate) {
+
+//        Date dateObject = new Date(rawDate);
+            String jsonDatePattern = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+            SimpleDateFormat jsonFormatter = new SimpleDateFormat(jsonDatePattern, Locale.US);
+            try {
+                Date parsedJsonDate = jsonFormatter.parse(rawDate);
+                String finalDatePattern = "MMM d, yyy";
+                SimpleDateFormat finalDateFormatter = new SimpleDateFormat(finalDatePattern, Locale.US);
+                return finalDateFormatter.format(parsedJsonDate);
+            } catch (ParseException e) {
+                Log.e("QueryUtils", "Error parsing JSON date: ", e);
+                return "";
+            }
     }
 
     static String makeHttpRequest(URL url) throws IOException {
@@ -73,7 +93,7 @@ public class QueryUtils {
                 Log.e("mainActivity", "Error response code: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-            Log.e("Queryutils", "Error making HTTP request: " + e);
+            Log.e("Queryutils", "Error making HTTP request: ", e);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -114,6 +134,7 @@ public class QueryUtils {
                 String webTitle = oneResult.getString("webTitle");
                 String url = oneResult.getString("webUrl");
                 String date = oneResult.getString("webPublicationDate");
+                date = formatDate(date);
                 String section = oneResult.getString("sectionName");
 
                 JSONArray tagsArray = oneResult.getJSONArray("tags");

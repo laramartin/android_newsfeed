@@ -34,7 +34,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader<List<News>> loader, List<News> data) {
-        adapter.addAll(data);
+        if (data != null) {
+            adapter.addAll(data);
+        }
     }
 
 

@@ -32,7 +32,7 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
             String jsonResponse = QueryUtils.makeHttpRequest(url);
             listOfNews = QueryUtils.parseJson(jsonResponse);
         } catch (IOException e) {
-            Log.e("Queryutils", "Error Loader LoadInBackground: " + e);
+            Log.e("Queryutils", "Error Loader LoadInBackground: ", e);
         }
 
         return listOfNews;
