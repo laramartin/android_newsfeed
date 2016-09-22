@@ -38,14 +38,12 @@ public class QueryUtils {
                 .appendQueryParameter("q", "Android")
                 .appendQueryParameter("api-key", "test");
         String url = builder.build().toString();
-        Log.v("QueryUtils", "url: " + url);
         return url;
     }
 
     static URL createUrl() {
         String stringUrl = createStringUrl();
         try {
-            Log.v("QueryUtils", "URL success");
             return new URL(stringUrl);
         } catch (MalformedURLException e) {
             Log.e("Queryutils", "Error creating URL: ", e);
@@ -141,7 +139,6 @@ public class QueryUtils {
                     }
                 }
                 listOfNews.add(new News(webTitle, author, url, date, section));
-                Log.v("queryutils", "author: " + author);
             }
         } catch (JSONException e) {
             Log.e("Queryutils", "Error parsing JSON response", e);
