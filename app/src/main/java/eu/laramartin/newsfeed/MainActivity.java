@@ -26,6 +26,7 @@ public class MainActivity
         setContentView(R.layout.activity_main);
         swipe = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
         swipe.setOnRefreshListener(this);
+        swipe.setColorSchemeColors(getResources().getColor(R.color.colorAccent));
         ListView listView = (ListView) findViewById(R.id.list_view);
         adapter = new NewsAdapter(this);
         listView.setAdapter(adapter);
@@ -39,12 +40,8 @@ public class MainActivity
                 startActivity(intent);
             }
         });
-
         getSupportLoaderManager().initLoader(LOADER_ID, null, this);
-
     }
-
-
 
     @Override
     public Loader<List<News>> onCreateLoader(int id, Bundle args) {
@@ -61,7 +58,6 @@ public class MainActivity
             adapter.addAll(data);
         }
     }
-
 
     @Override
     public void onLoaderReset(Loader<List<News>> loader) {

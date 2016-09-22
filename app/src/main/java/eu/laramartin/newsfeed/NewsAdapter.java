@@ -20,11 +20,10 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
+            convertView
+                    = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
-
         TextView title = (TextView) convertView.findViewById(R.id.title);
         TextView author = (TextView) convertView.findViewById(R.id.author);
         TextView date = (TextView) convertView.findViewById(R.id.date);
