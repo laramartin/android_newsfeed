@@ -7,7 +7,7 @@
 - Get the latest Android News 
 - Retrieves data from The Guardian API. 
 - Only the first 10 results will be displayed. 
-- Pull down to refresh the news list
+- Swipe down to refresh the news list
 - Tap any item to open the article in your browser
 
 # Screenshot
