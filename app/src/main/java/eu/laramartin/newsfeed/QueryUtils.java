@@ -35,7 +35,7 @@ public class QueryUtils {
                 .appendQueryParameter("order-by", "newest")
                 .appendQueryParameter("show-references", "author")
                 .appendQueryParameter("show-tags", "contributor")
-                .appendQueryParameter("q", "Berlin")
+                .appendQueryParameter("q", "Android")
                 .appendQueryParameter("api-key", "test");
         String url = builder.build().toString();
         Log.v("QueryUtils", "url: " + url);
