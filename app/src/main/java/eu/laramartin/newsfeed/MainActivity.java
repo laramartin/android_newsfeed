@@ -41,7 +41,9 @@ public class MainActivity
     public void onLoadFinished(Loader<List<News>> loader, List<News> data) {
         swipe.setRefreshing(false);
         if (data != null) {
+            adapter.setNotifyOnChange(false);
             adapter.clear();
+            adapter.setNotifyOnChange(true);
             adapter.addAll(data);
         }
     }
