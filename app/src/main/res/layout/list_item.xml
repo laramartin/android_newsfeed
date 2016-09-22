@@ -9,12 +9,12 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="ola k ase "
+        tools:text="This is going to be a long headline, I'm sure."
         style="@style/title"/>
 
     <TextView
         android:id="@+id/author"
-        tools:text="ola k ase "
+        tools:text="Max Mustermann"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/author" />
@@ -26,7 +26,7 @@
 
         <TextView
             android:id="@+id/date"
-            tools:text="ola k ase "
+            tools:text="Sep 22, 2016"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -34,7 +34,7 @@
 
         <TextView
             android:id="@+id/section"
-            tools:text="ola k ase "
+            tools:text="Development"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
