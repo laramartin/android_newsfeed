@@ -1,12 +1,12 @@
 # Android News
 
 - Project **News App** of Android Basics Nanodegree
-- [Android Basics Nanodegree at Udacity.com](https://www.udacity.com/course/android-basics-nanodegree-by-google--nd803).
+- [Android Basics Nanodegree at Udacity.com](https://www.udacity.com/course/android-basics-nanodegree-by-google--nd803)
 
 # Description
-- Get the latest Android News 
-- Retrieves data from The Guardian API. 
-- Only the first 10 results will be displayed. 
+- Get the latest Android News
+- Retrieves data from The Guardian API
+- Only the first 10 results will be displayed
 - Swipe down to refresh the news list
 - Tap any item to open the article in your browser
 
