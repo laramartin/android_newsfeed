@@ -25,7 +25,6 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
 
     @Override
     public List<News> loadInBackground() {
-
         List<News> listOfNews = null;
         try {
             URL url = QueryUtils.createUrl();
@@ -34,7 +33,6 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
         } catch (IOException e) {
             Log.e("Queryutils", "Error Loader LoadInBackground: ", e);
         }
-
         return listOfNews;
     }
 }

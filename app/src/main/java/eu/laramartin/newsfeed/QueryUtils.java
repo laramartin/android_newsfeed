@@ -51,12 +51,9 @@ public class QueryUtils {
             Log.e("Queryutils", "Error creating URL: ", e);
             return null;
         }
-
     }
 
     private static String formatDate(String rawDate) {
-
-//        Date dateObject = new Date(rawDate);
             String jsonDatePattern = "yyyy-MM-dd'T'HH:mm:ss'Z'";
             SimpleDateFormat jsonFormatter = new SimpleDateFormat(jsonDatePattern, Locale.US);
             try {
@@ -76,7 +73,6 @@ public class QueryUtils {
         if (url == null){
             return jsonResponse;
         }
-
         HttpURLConnection urlConnection = null;
         InputStream inputStream = null;
 
@@ -121,13 +117,10 @@ public class QueryUtils {
 
     static List<News> parseJson(String response) {
         ArrayList<News> listOfNews = new ArrayList<>();
-
-        JSONArray resultsArray = null;
-
         try {
             JSONObject jsonResponse = new JSONObject(response);
             JSONObject jsonResults = jsonResponse.getJSONObject("response");
-            resultsArray = jsonResults.getJSONArray("results");
+            JSONArray resultsArray = jsonResults.getJSONArray("results");
 
             for (int i = 0; i < resultsArray.length(); i++) {
                 JSONObject oneResult = resultsArray.getJSONObject(i);
@@ -136,7 +129,6 @@ public class QueryUtils {
                 String date = oneResult.getString("webPublicationDate");
                 date = formatDate(date);
                 String section = oneResult.getString("sectionName");
-
                 JSONArray tagsArray = oneResult.getJSONArray("tags");
                 String author = "";
 
@@ -148,15 +140,12 @@ public class QueryUtils {
                         author += firstObject.getString("webTitle") + ". ";
                     }
                 }
-
                 listOfNews.add(new News(webTitle, author, url, date, section));
                 Log.v("queryutils", "author: " + author);
             }
-
         } catch (JSONException e) {
             Log.e("Queryutils", "Error parsing JSON response", e);
         }
-
         return listOfNews;
     }
 }
