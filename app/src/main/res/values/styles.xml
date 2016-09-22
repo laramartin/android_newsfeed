@@ -8,4 +8,21 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="title" parent="Base.TextAppearance.AppCompat.Large">
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <style name="author" parent="Base.TextAppearance.AppCompat.Small">
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <style name="date" parent="Base.TextAppearance.AppCompat.Small">
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <style name="section" parent="Base.TextAppearance.AppCompat.Small">
+        <item name="android:gravity">right</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
 </resources>
