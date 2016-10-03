@@ -3,6 +3,15 @@
 - Project **News App** of Android Basics Nanodegree
 - [Android Basics Nanodegree at Udacity.com](https://www.udacity.com/course/android-basics-nanodegree-by-google--nd803)
 
+## Android Goodies
+
+- HttpURLConnection.
+- Loaders (AsyncTaskLoader)
+- StringBuilders.
+- JSON Parsing.
+- ArrayAdapter.
+- ListView.
+
 # Description
 - Get the latest Android News
 - Retrieves data from The Guardian API
